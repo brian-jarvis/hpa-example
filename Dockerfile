@@ -1,6 +1,6 @@
 ARG TAG
 ARG GO_VERSION
-FROM golang:${TAG} as builder
+FROM golang:1.17-alpine as builder
 ENV XDG_CACHE_HOME /tmp/.cache
 WORKDIR /app
 LABEL maintainer="Byron Collins <byronical@gmail.com>"
@@ -18,7 +18,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
 ######## Start a new stage from scratch #######
 FROM scratch
 LABEL maintainer="Byron Collins <byronical@gmail.com>" \
-      go_version="${GO_VERSION}"
+      go_version="1.17"
 
 
 WORKDIR /root/
