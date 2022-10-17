@@ -16,7 +16,8 @@ COPY main.go .
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
 
 ######## Start a new stage from scratch #######
-FROM scratch
+## FROM scratch
+FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
 LABEL maintainer="Byron Collins <byronical@gmail.com>" \
       go_version="1.17"
 
